@@ -4,7 +4,7 @@ import { FaBriefcase, FaBuilding, FaUsers, FaPlusCircle } from "react-icons/fa";
 export default function HeroSection() {
     return (
         <div
-            className="relative h-[90vh] flex flex-col items-center justify-center text-white text-center"
+            className="relative h-[90vh] flex flex-col items-center justify-center text-white text-center pt-8 md:pt-0"
             style={{
                 backgroundImage:
                     "url('https://images.unsplash.com/photo-1521790361543-f645cf042ec4?auto=format&fit=crop&w=1400&q=80')",
@@ -18,12 +18,12 @@ export default function HeroSection() {
             {/* Content */}
             <div className="relative z-10 max-w-3xl px-6 flex flex-col items-center space-y-6">
                 {/* Heading */}
-                <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                <h1 className="text-5xl md:text-6xl font-bold leading-tight">
                     Find Your <span className="text-blue-400">Dream Job</span> Today
                 </h1>
 
                 {/* Description */}
-                <p className="text-lg text-gray-300">
+                <p className="font-semibold text-xl text-gray-300">
                     Explore thousands of jobs, connect with top companies, and take your
                     career to the next level.
                 </p>
@@ -31,28 +31,28 @@ export default function HeroSection() {
                 {/* Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6 text-left">
                     <div className="flex items-center space-x-3">
-                        <FaBriefcase className="text-blue-400 text-2xl" />
+                        <FaBriefcase className="text-blue-400 text-4xl" />
                         <div>
                             <p className="text-xl font-semibold">12k+</p>
                             <span className="text-gray-300">Live Jobs</span>
                         </div>
                     </div>
                     <div className="flex items-center space-x-3">
-                        <FaBuilding className="text-green-400 text-2xl" />
+                        <FaBuilding className="text-green-400 text-4xl" />
                         <div>
                             <p className="text-xl font-semibold">3k+</p>
                             <span className="text-gray-300">Companies</span>
                         </div>
                     </div>
                     <div className="flex items-center space-x-3">
-                        <FaUsers className="text-yellow-400 text-2xl" />
+                        <FaUsers className="text-yellow-400 text-4xl" />
                         <div>
                             <p className="text-xl font-semibold">25k+</p>
                             <span className="text-gray-300">Candidates</span>
                         </div>
                     </div>
                     <div className="flex items-center space-x-3">
-                        <FaPlusCircle className="text-pink-400 text-2xl" />
+                        <FaPlusCircle className="text-pink-400 text-4xl" />
                         <div>
                             <p className="text-xl font-semibold">500+</p>
                             <span className="text-gray-300">New Jobs</span>
