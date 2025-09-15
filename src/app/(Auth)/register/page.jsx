@@ -5,13 +5,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FcGoogle } from "react-icons/fc";
+import { registerUser } from "@/app/actions/auth/registerUser";
 
 export default function RegisterPage() {
     const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         setLoading(true);
+
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const payload = {
+            name, email, password
+        }
+        // console.log(payload);
+        const result = await registerUser(payload);
+        console.log(result);
+
         setTimeout(() => setLoading(false), 1500); // simulate register
     };
 
@@ -39,6 +52,7 @@ export default function RegisterPage() {
                             <label className="text-sm font-medium text-gray-700">Full Name</label>
                             <Input
                                 type="text"
+                                name="name"
                                 placeholder="John Doe"
                                 className="border-gray-300 focus-visible:ring-purple-500"
                                 required
@@ -50,6 +64,7 @@ export default function RegisterPage() {
                             <label className="text-sm font-medium text-gray-700">Email</label>
                             <Input
                                 type="email"
+                                name="email"
                                 placeholder="info@example.com"
                                 className="border-gray-300 focus-visible:ring-purple-500"
                                 required
@@ -61,6 +76,7 @@ export default function RegisterPage() {
                             <label className="text-sm font-medium text-gray-700">Password</label>
                             <Input
                                 type="password"
+                                name="password"
                                 placeholder="********"
                                 className="border-gray-300 focus-visible:ring-purple-500"
                                 required

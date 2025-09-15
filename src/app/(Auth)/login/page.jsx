@@ -5,17 +5,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FcGoogle } from "react-icons/fc";
+import { signIn } from "next-auth/react"
 
 export default function LoginPage() {
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        signIn();
         setLoading(true);
         setTimeout(() => setLoading(false), 1500); // simulate loading
     };
 
     const handleGoogleLogin = () => {
+        
         // TODO: integrate NextAuth Google provider
         console.log("Google login clicked");
     };

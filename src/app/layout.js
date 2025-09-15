@@ -1,17 +1,15 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Exo_2, } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import NextAuthSessionProvider from "@/Providers/NextAuthProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// configure font
+const exoFont = Exo_2({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], // add the weights you need
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Create Next App",
@@ -20,16 +18,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar/>
-        <main>
-          {children}
-        </main>
-        <Footer/>
-      </body>
+    <html lang="en" className={`${exoFont.className}`}>
+      <NextAuthSessionProvider>
+        <body>
+          <Navbar />
+          <main>
+            {children}
+          </main>
+          <Footer />
+        </body>
+      </NextAuthSessionProvider>
     </html>
   );
 }

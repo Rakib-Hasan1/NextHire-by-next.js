@@ -5,11 +5,13 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react"; // from shadcn (lucide icons)
 import { Button } from "@/components/ui/button"; // shadcn button
-// import { signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
-    // const { data: session } = useSession();
+    const { data: session } = useSession();
     const [mobileOpen, setMobileOpen] = useState(false);
+
+    console.log("current user info", session);
 
     const navLinks = [
         { name: "Home", href: "/" },
@@ -41,7 +43,7 @@ const Navbar = () => {
 
                 {/* Auth Button */}
                 <div className="hidden md:block">
-                    
+                    {session ? (
                         <Button
                             variant="outline"
                             className="rounded-full"
@@ -49,13 +51,14 @@ const Navbar = () => {
                         >
                             Logout
                         </Button>
-                    
+                    ) : (
+
                         <Link href="/login">
                             <Button className="rounded-full bg-blue-600 text-white hover:bg-blue-700">
                                 Login
                             </Button>
                         </Link>
-                    
+                    )}
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -88,7 +91,7 @@ const Navbar = () => {
                                 </Link>
                             ))}
 
-                            
+                            {session ? (
                                 <Button
                                     variant="outline"
                                     className="w-full"
@@ -99,13 +102,15 @@ const Navbar = () => {
                                 >
                                     Logout
                                 </Button>
-                            
+                            ) : (
+
                                 <Link href="/login" onClick={() => setMobileOpen(false)}>
                                     <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">
                                         Login
                                     </Button>
                                 </Link>
-                            
+                            )}
+
                         </div>
                     </motion.div>
                 )}
